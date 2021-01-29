@@ -39,6 +39,8 @@ body {
 
 .features h3,
 .designer h3,
+.cart-header h3,
+.checkout-success-modal h3,
 .similar-product h3 {
     font-family: "Lora";
     color: #1b2690;
@@ -48,6 +50,8 @@ body {
 .features p,
 .designer p,
 .similar-product p,
+.cart-header p,
+.checkout-success-modal p,
 footer p {
     font-weight: 200;
     color: #b7b7b7;
@@ -170,4 +174,15 @@ footer p {
 .similar-product{
     margin-top:180px;
     margin-bottom: 100px;
+}
+
+/* cart */
+.cart-breadcrumb{
+    margin-top: 40px;
+}
+
+.checkout-item{
+    background-color: #f6f7f8;
+    border: 1px solid #eaeaea;
+    color: #171717;
 }
