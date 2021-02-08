@@ -1,6 +1,6 @@
 import brand from "../../assets/img/logo_small.png";
-import "font-awesome/css/font-awesome.min.css";
 import style from "./header.module.scss";
+import "font-awesome/css/font-awesome.min.css";
 
 const Header = () => {
   return (

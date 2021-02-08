@@ -24,7 +24,7 @@ const Feature = () => {
                   alt="featire hefa"
                 />
                 <a
-                  href="detail.html"
+                  href="/detail"
                   className="d-flex justify-content-center href"
                 >
                   <img src={plus} alt="plus" className="align-self-center" />
@@ -45,7 +45,7 @@ const Feature = () => {
                   className={`${style.figureImg} img-fluid`}
                   alt="featire hefa"
                 />
-                <a href="detail.html" className="d-flex justify-content-center">
+                <a href="/detail" className="d-flex justify-content-center">
                   <img src={plus} alt="plus" className="align-self-center" />
                 </a>
               </div>
@@ -63,7 +63,7 @@ const Feature = () => {
                   className={`${style.figureImg} img-fluid`}
                   alt="featire hefa"
                 />
-                <a href="detail.html" className="d-flex justify-content-center">
+                <a href="/detail" className="d-flex justify-content-center">
                   <img src={plus} alt="plus" className="align-self-center" />
                 </a>
               </div>
@@ -81,7 +81,7 @@ const Feature = () => {
                   className={`${style.figureImg} img-fluid`}
                   alt="featire hefa"
                 />
-                <a href="detail.html" className="d-flex justify-content-center">
+                <a href="/detail" className="d-flex justify-content-center">
                   <img src={plus} alt="plus" className="align-self-center" />
                 </a>
               </div>
@@ -99,7 +99,7 @@ const Feature = () => {
                   className={`${style.figureImg} img-fluid`}
                   alt="featire hefa"
                 />
-                <a href="detail.html" className="d-flex justify-content-center">
+                <a href="/detail" className="d-flex justify-content-center">
                   <img src={plus} alt="plus" className="align-self-center" />
                 </a>
               </div>
@@ -117,7 +117,7 @@ const Feature = () => {
                   className={`${style.figureImg} img-fluid`}
                   alt="featire hefa"
                 />
-                <a href="detail.html" className="d-flex justify-content-center">
+                <a href="/detail" className="d-flex justify-content-center">
                   <img src={plus} alt="plus" className="align-self-center" />
                 </a>
               </div>
