@@ -1,37 +1,33 @@
-.features {
-    h3 {
-        font-family: "Lora";
-        color: #1b2690;
-        font-weight: bold;
+.features h3 {
+    font-family: "Lora";
+    color: #1b2690;
+    font-weight: bold;
+}
+
+.features p {
+    font-weight: 200;
+    color: #b7b7b7;
+}
+
+.figure h5 {
+    color: #171717;
+}
+
+.figureImg {
+    position: relative;
+
+    a {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        opacity: 0;
+        transition: opacity 0.5s;
     }
 
-    p {
-        font-weight: 200;
-        color: #b7b7b7;
+    &:hover a {
+        opacity: 1;
     }
-
-    .figure h5 {
-        color: #171717;
-
-        .figureImg {
-            position: relative;    
-        }
-        .figureImg a {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.7);
-            opacity: 0;
-            transition: opacity 0.5s
-        }
-
-        .figure:hover a {
-            opacity: 1;
-        }
-
-
-    }
-
 }
