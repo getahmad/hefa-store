@@ -3,7 +3,7 @@ const Breadcrumb = (props) => {
     <>
       <div className="container ">
         <nav aria-label="breadcrumb ">
-          <ol className="breadcrumb bg-transparent pl-0 mt-5 pt-5">
+          <ol className="breadcrumb bg-transparent pl-0 mt-5 ">
             <li className="breadcrumb-item">
               <a href="/">Home</a>
             </li>
