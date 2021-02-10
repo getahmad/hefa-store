@@ -1,7 +1,9 @@
+import style from "./cartBiaya.module.scss";
+
 const CartBiaya = () => {
   return (
     <>
-      <div className="card rounded-0 checkout-item">
+      <div className={`card rounded-0 ${style.checkoutItem}`}>
         <div className="card-body">
           <h5 className="card-title">Informasi Biaya</h5>
           <div className="row mb-3">

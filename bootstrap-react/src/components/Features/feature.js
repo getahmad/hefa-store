@@ -1,132 +1,63 @@
-import feature1 from "../../assets/img/feature/1.png";
-import feature2 from "../../assets/img/feature/2.png";
-import feature3 from "../../assets/img/feature/3.png";
 import plus from "../../assets/img/detail.png";
 import style from "./feature.module.scss";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import ProductSkeleton from "../Skeleton/productSkeleton";
 
 const Feature = () => {
+  const [product, setProduct] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    const urlProduct = `https://fakestoreapi.com/products/category/women%20clothing?limit=12`;
+    axios.get(urlProduct).then((res) => {
+      setProduct(res.data);
+      setLoading(false);
+    });
+  }, []);
+
   return (
     <section className={`bg-light p-5 ${style.features}`}>
       <div className="container">
         <div className="row">
           <div className="col mb-3">
             <h3>Special Eid</h3>
-            <p>promo pakaian cocok untuk lebaran</p>
+            <p>Promo!! grab it fast</p>
           </div>
         </div>
         <div className="row">
-          <div className="col-6 col-sm-4 col-md-3 col-lg-2">
-            <figure className={style.figure}>
-              <div className={style.figureImg}>
-                <img
-                  src={feature1}
-                  className={`${style.figureImg} img-fluid`}
-                  alt="featire hefa"
-                />
-                <a
-                  href="/detail"
-                  className="d-flex justify-content-center href"
-                >
-                  <img src={plus} alt="plus" className="align-self-center" />
-                </a>
-              </div>
+          {product.map((product) => (
+            <div className="col-6 col-sm-4 col-md-3 col-lg-2">
+              {loading && <ProductSkeleton />}
+              {!loading && (
+                <figure className={style.figure}>
+                  <div className={style.figureImg}>
+                    <img
+                      src={product.image}
+                      className={`${style.figureImg} img-fluid`}
+                      alt="featire hefa"
+                    />
+                    <a
+                      href="/detail"
+                      className="d-flex justify-content-center href"
+                    >
+                      <img
+                        src={plus}
+                        alt="plus"
+                        className="align-self-center"
+                      />
+                    </a>
+                  </div>
 
-              <figcaption className="figure-caption text-center">
-                <h5>Jeans Pubb</h5>
-                <p>IDR 190.000</p>
-              </figcaption>
-            </figure>
-          </div>
-          <div className="col-6 col-sm-4 col-md-3 col-lg-2">
-            <figure className={style.figure}>
-              <div className={style.figureImg}>
-                <img
-                  src={feature2}
-                  className={`${style.figureImg} img-fluid`}
-                  alt="featire hefa"
-                />
-                <a href="/detail" className="d-flex justify-content-center">
-                  <img src={plus} alt="plus" className="align-self-center" />
-                </a>
-              </div>
-              <figcaption className="figure-caption text-center">
-                <h5>Jeans Pubb</h5>
-                <p>IDR 190.000</p>
-              </figcaption>
-            </figure>
-          </div>
-          <div className="col-6 col-sm-4 col-md-3 col-lg-2">
-            <figure className={style.figure}>
-              <div className={style.figureImg}>
-                <img
-                  src={feature3}
-                  className={`${style.figureImg} img-fluid`}
-                  alt="featire hefa"
-                />
-                <a href="/detail" className="d-flex justify-content-center">
-                  <img src={plus} alt="plus" className="align-self-center" />
-                </a>
-              </div>
-              <figcaption className="figure-caption text-center">
-                <h5>Jeans Pubb</h5>
-                <p>IDR 190.000</p>
-              </figcaption>
-            </figure>
-          </div>
-          <div className="col-6 col-sm-4 col-md-3 col-lg-2">
-            <figure className={style.figure}>
-              <div className={style.figureImg}>
-                <img
-                  src={feature1}
-                  className={`${style.figureImg} img-fluid`}
-                  alt="featire hefa"
-                />
-                <a href="/detail" className="d-flex justify-content-center">
-                  <img src={plus} alt="plus" className="align-self-center" />
-                </a>
-              </div>
-              <figcaption className="figure-caption text-center">
-                <h5>Jeans Pubb</h5>
-                <p>IDR 190.000</p>
-              </figcaption>
-            </figure>
-          </div>
-          <div className="col-6 col-sm-4 col-md-3 col-lg-2">
-            <figure className={style.figure}>
-              <div className={style.figureImg}>
-                <img
-                  src={feature3}
-                  className={`${style.figureImg} img-fluid`}
-                  alt="featire hefa"
-                />
-                <a href="/detail" className="d-flex justify-content-center">
-                  <img src={plus} alt="plus" className="align-self-center" />
-                </a>
-              </div>
-              <figcaption className="figure-caption text-center">
-                <h5>Jeans Pubb</h5>
-                <p>IDR 190.000</p>
-              </figcaption>
-            </figure>
-          </div>
-          <div className="col-6 col-sm-4 col-md-3 col-lg-2">
-            <figure className={style.figure}>
-              <div className={style.figureImg}>
-                <img
-                  src={feature2}
-                  className={`${style.figureImg} img-fluid`}
-                  alt="featire hefa"
-                />
-                <a href="/detail" className="d-flex justify-content-center">
-                  <img src={plus} alt="plus" className="align-self-center" />
-                </a>
-              </div>
-              <figcaption className="figure-caption text-center">
-                <h5>Jeans Pubb</h5>
-                <p>IDR 190.000</p>
-              </figcaption>
-            </figure>
-          </div>
+                  <figcaption className="figure-caption text-center">
+                    <h5>{product.title.slice(0, 20)}</h5>
+                    <p>IDR {product.price}</p>
+                  </figcaption>
+                </figure>
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </section>
