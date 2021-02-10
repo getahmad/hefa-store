@@ -45,9 +45,9 @@ const Header = () => {
               </a>
             </li>
           </ul>
-          <a href="/" className="nav-link text-white">
-            <i className="fa fa-shopping-cart"></i> My Cart (
-            <span className={style.totalCart}>12</span> )
+          <a href="/checkout" className="nav-link text-white">
+            <i className="fa fa-shopping-cart" style={{ fontSize: "20px" }}></i>{" "}
+            My Cart (<span className={style.totalCart}>12</span> )
           </a>
         </div>
       </div>

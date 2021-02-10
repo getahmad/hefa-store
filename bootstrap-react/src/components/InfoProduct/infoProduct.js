@@ -57,7 +57,7 @@ const InfoProduct = () => {
 
               <div className={style.btnProduct}>
                 <a
-                  href="/cart"
+                  href="/checkout"
                   className={`btn btn-warning text-white ${style.btnCart}`}
                 >
                   Add to cart

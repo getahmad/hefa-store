@@ -47,3 +47,33 @@
 body {
     font-family: "Montserrat";
 }
+
+//navbar/header
+.nav-item {
+    margin-right: 20px;
+    font-weight: 200;
+
+    &.active a {
+        color: #F9B234 !important;
+        font-weight: 600;
+    }
+}
+
+.nav-link span {
+    color: #F9B234;
+    font-weight: 600;
+}
+
+
+//cart checkout
+
+.cart-header h3 {
+    font-family: "Lora";
+    color: #1b2690;
+    font-weight: bold;
+}
+
+.cart-header p {
+    font-weight: 200;
+    color: #b7b7b7;
+}
