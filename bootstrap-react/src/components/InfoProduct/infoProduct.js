@@ -1,4 +1,3 @@
-import imgDetail1 from "../../assets/img/single/1.png";
 import designBy from "../../assets/img/single/2.png";
 import tumbnail1 from "../../assets/img/single/thumbnail/1.png";
 import tumbnail2 from "../../assets/img/single/thumbnail/2.png";
@@ -8,8 +7,21 @@ import imgReview1 from "../../assets/img/single/review/1.png";
 import imgReview2 from "../../assets/img/single/review/2.png";
 import style from "./infoProduct.module.scss";
 import "font-awesome/css/font-awesome.min.css";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const InfoProduct = () => {
+  const [productDetail, setProductDetail] = useState({});
+
+  let { id } = useParams();
+  useEffect(() => {
+    const urlProductDetail = `https://fakestoreapi.com/products/${id}`;
+    axios.get(urlProductDetail).then((response) => {
+      setProductDetail(response.data);
+    });
+  }, [id]);
+
   return (
     <>
       <section className="detail-product">
@@ -17,7 +29,11 @@ const InfoProduct = () => {
           <div className="row">
             <div className="col-lg-5">
               <figure className="figure">
-                <img src={imgDetail1} className="figure-img img-fluid" alt="" />
+                <img
+                  src={productDetail.image}
+                  className={`figure-img img-fluid ${style.imgProductDetailActive}`}
+                  alt=""
+                />
                 <figcaption
                   className={`figure-caption ${style.productThumbnailContainer} d-flex justify-content-between`}
                 >
@@ -36,9 +52,9 @@ const InfoProduct = () => {
                 </figcaption>
               </figure>
             </div>
-            <div className="col-lg-4">
-              <h3>Jeans Giordano XI</h3>
-              <p className="text-muted">IDR 290.000.000</p>
+            <div className="col-lg-5">
+              <h3 style={{ minHeight: "100px" }}>{productDetail.title}</h3>
+              <p className="text-muted">$ {productDetail.price}</p>
               <button
                 type="button"
                 className="btn btn-sm"
@@ -132,30 +148,7 @@ const InfoProduct = () => {
                   role="tabpanel"
                   aria-labelledby="description-tab"
                 >
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Delectus minima molestiae ex soluta, quibusdam eligendi,
-                    iure laudantium velit beatae accusamus, modi animi atque
-                    ullam vero saepe rerum qui nulla quidem!
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dicta atque expedita, necessitatibus nostrum accusamus at
-                    dignissimos suscipit repellendus earum laboriosam autem
-                    beatae sit pariatur, corrupti ex sed dolorum possimus velit!
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dicta atque expedita, necessitatibus nostrum accusamus at
-                    dignissimos suscipit repellendus earum laboriosam autem
-                    beatae sit pariatur, corrupti ex sed dolorum possimus velit!
-                  </p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Dicta atque expedita, necessitatibus nostrum accusamus at
-                    dignissimos suscipit repellendus earum laboriosam autem
-                    beatae sit pariatur, corrupti ex sed dolorum possimus velit!
-                  </p>
+                  <p>{productDetail.description}</p>
                 </div>
                 <div
                   className={`tab-pane fade p-3 ${style.productReview}`}

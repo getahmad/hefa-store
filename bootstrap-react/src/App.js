@@ -11,7 +11,7 @@ function App() {
           <Route path="/checkout">
             <CartCheckout />
           </Route>
-          <Route path="/detail">
+          <Route path="/detail/:id">
             <DetailProduct />
           </Route>
           <Route path="/">

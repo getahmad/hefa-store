@@ -1,9 +1,27 @@
-import similar1 from "../../assets/img/single/similar/1.png";
-import similar2 from "../../assets/img/single/similar/2.png";
-import similar3 from "../../assets/img/single/similar/3.png";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import style from "./similarProduct.module.scss";
 
 const SimilarProduct = () => {
+  const [productDetail, setProductDetail] = useState({});
+
+  let { id } = useParams();
+  useEffect(() => {
+    const urlProductDetail = `https://fakestoreapi.com/products/${id}`;
+    axios.get(urlProductDetail).then((response) => {
+      setProductDetail(response.data);
+    });
+  }, [id]);
+
+  const [similarProduct, setSimilarProduct] = useState([]);
+  useEffect(() => {
+    const urlSimilarProduct = `https://fakestoreapi.com/products/category/${productDetail.category}?limit=4`;
+    axios.get(urlSimilarProduct).then((response) => {
+      setSimilarProduct(response.data);
+    });
+  }, [productDetail.category]);
+
   return (
     <section className={style.similarProduct}>
       <div className="container">
@@ -15,54 +33,28 @@ const SimilarProduct = () => {
         </div>
 
         <div className="row">
-          <div className="col-sm-4">
-            <figure className="figure">
-              <img src={similar1} className="figure-img img-fluid" alt="..." />
-              <figcaption className="figure-caption">
-                <div className="row">
-                  <div className="col">
-                    <h4>Hatty Bomb</h4>
-                    <p>Match 20%</p>
+          {similarProduct.map((product, index) => (
+            <div className="col-sm-3" key={index}>
+              <figure className="figure">
+                <img
+                  src={product.image}
+                  className={`figure-img img-fluid ${style.imgSimilarProduct}`}
+                  alt="..."
+                />
+                <figcaption className="figure-caption">
+                  <div className="row">
+                    <div className="col">
+                      <h6>Hatty Bomb</h6>
+                      <p>{product.category}</p>
+                    </div>
+                    <div className="col d-flex align-items-center justify-content-end">
+                      <p style={{ fontSize: "18px" }}>$ {product.price}</p>
+                    </div>
                   </div>
-                  <div className="col d-flex align-items-center justify-content-end">
-                    <p style={{ fontSize: "18px" }}>IDR 299.000</p>
-                  </div>
-                </div>
-              </figcaption>
-            </figure>
-          </div>
-          <div className="col-sm-4">
-            <figure className="figure">
-              <img src={similar2} className="figure-img img-fluid" alt="..." />
-              <figcaption className="figure-caption">
-                <div className="row">
-                  <div className="col">
-                    <h4>White pure</h4>
-                    <p>Match 20%</p>
-                  </div>
-                  <div className="col d-flex align-items-center justify-content-end">
-                    <p style={{ fontSize: "18px" }}>IDR 299.000</p>
-                  </div>
-                </div>
-              </figcaption>
-            </figure>
-          </div>
-          <div className="col-sm-4">
-            <figure className="figure">
-              <img src={similar3} className="figure-img img-fluid" alt="..." />
-              <figcaption className="figure-caption">
-                <div className="row">
-                  <div className="col">
-                    <h4>Hatty Bomb</h4>
-                    <p>Match 20%</p>
-                  </div>
-                  <div className="col d-flex align-items-center justify-content-end">
-                    <p style={{ fontSize: "18px" }}>IDR 299.000</p>
-                  </div>
-                </div>
-              </figcaption>
-            </figure>
-          </div>
+                </figcaption>
+              </figure>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -39,7 +39,7 @@ const Feature = () => {
                       alt="featire hefa"
                     />
                     <a
-                      href="/detail"
+                      href={`/detail/${product.id}`}
                       className="d-flex justify-content-center href"
                     >
                       <img

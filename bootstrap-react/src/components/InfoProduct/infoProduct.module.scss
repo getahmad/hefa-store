@@ -1,3 +1,11 @@
+.imgProductDetailActive{
+  min-height: 476px; 
+  max-height: 476px;
+  max-width:444px;
+  object-fit: contain;
+  width: 100%;
+}
+
 .productThumbnailContainer {
     background-color: #fff;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
