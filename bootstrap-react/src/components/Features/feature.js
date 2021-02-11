@@ -10,7 +10,7 @@ const Feature = () => {
 
   useEffect(() => {
     setLoading(true);
-    const urlProduct = `https://fakestoreapi.com/products/category/women%20clothing?limit=12`;
+    const urlProduct = `https://fakestoreapi.com/products?limit=18`;
     axios.get(urlProduct).then((res) => {
       setProduct(res.data);
       setLoading(false);
@@ -27,8 +27,8 @@ const Feature = () => {
           </div>
         </div>
         <div className="row">
-          {product.map((product) => (
-            <div className="col-6 col-sm-4 col-md-3 col-lg-2">
+          {product.map((product, index) => (
+            <div className="col-6 col-sm-4 col-md-3 col-lg-2" key={index}>
               {loading && <ProductSkeleton />}
               {!loading && (
                 <figure className={style.figure}>
@@ -52,7 +52,7 @@ const Feature = () => {
 
                   <figcaption className="figure-caption text-center">
                     <h5>{product.title.slice(0, 20)}</h5>
-                    <p>IDR {product.price}</p>
+                    <p>$ {product.price}</p>
                   </figcaption>
                 </figure>
               )}
