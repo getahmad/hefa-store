@@ -8,7 +8,7 @@ const DetailProduct = () => {
   return (
     <>
       <Header />
-      <div className="pt-5">
+      <div className="pt-5 container">
         <Breadcrumb breadcrumbCurrent="Detail" />
       </div>
       <InfoProduct />

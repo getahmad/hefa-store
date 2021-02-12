@@ -3,10 +3,14 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./assets/scss/style.scss";
+import { Provider } from "react-redux";
+import globalStore from "./redux/store";
 
 ReactDOM.render(
   <React.Fragment>
-    <App />
+    <Provider store={globalStore}>
+      <App />
+    </Provider>
   </React.Fragment>,
   document.getElementById("root")
 );

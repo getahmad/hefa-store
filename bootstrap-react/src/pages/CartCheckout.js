@@ -9,37 +9,32 @@ const CartCheckout = () => {
   return (
     <>
       <Header />
-      <div className="container cart-header mt-5 pt-5 pl-0">
-        <div className="row mt-5 text-center">
+      <div className="container cart-header mt-5 pt-5 ">
+        <div className="row mt-5 text-center pl-0">
           <div className="col">
             <h3>Your Cart</h3>
             <p>Pastikan barang anda terbayar lunas</p>
           </div>
         </div>
         <Breadcrumb breadcrumbCurrent="Cart Checkout" />
-
-        <section className="checkout">
-          <div className="container">
-            <div
-              className="row justify-content-between"
-              style={{ marginBottom: "100px" }}
-            >
-              <div className="col-lg-6">
-                <h4 className="mb-4">Your Item</h4>
-                <CartItem />
-                <CartItem />
-                <CartItem />
-                <h4 className="mb-5" style={{ marginTop: "100px" }}>
-                  Your Address
-                </h4>
-                <CartForm />
-              </div>
-              <div className="col-lg-5">
-                <CartBiaya />
-              </div>
-            </div>
+        <div
+          className="row justify-content-between"
+          style={{ marginBottom: "100px" }}
+        >
+          <div className="col-lg-6">
+            <h4 className="mb-4">Your Item</h4>
+            <CartItem />
+            <CartItem />
+            <CartItem />
+            <h4 className="mb-5" style={{ marginTop: "100px" }}>
+              Your Address
+            </h4>
+            <CartForm />
           </div>
-        </section>
+          <div className="col-lg-5">
+            <CartBiaya />
+          </div>
+        </div>
       </div>
       <Footer />
     </>

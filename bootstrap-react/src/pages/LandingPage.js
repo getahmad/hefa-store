@@ -1,5 +1,6 @@
 import Brand from "../components/Brand/brand";
 import Carousel from "../components/Carousel/carousel";
+import Category from "../components/Category/category";
 import Designer from "../components/Designer/designer";
 import Feature from "../components/Features/feature";
 import Footer from "../components/Footer/footer";
@@ -11,6 +12,7 @@ const LandingPage = () => {
       <Header />
       <Carousel />
       <Brand />
+      <Category />
       <Feature />
       <Designer />
       <Footer />

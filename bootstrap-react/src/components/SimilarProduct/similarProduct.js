@@ -1,24 +1,28 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ProductSkeleton from "../Skeleton/productSkeleton";
 import style from "./similarProduct.module.scss";
 
 const SimilarProduct = () => {
   const [productDetail, setProductDetail] = useState({});
+  const [similarProduct, setSimilarProduct] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-  let { id } = useParams();
+  let { idProduct } = useParams();
   useEffect(() => {
-    const urlProductDetail = `https://fakestoreapi.com/products/${id}`;
+    const urlProductDetail = `${process.env.REACT_APP_API_KEY}/products/${idProduct}`;
     axios.get(urlProductDetail).then((response) => {
       setProductDetail(response.data);
     });
-  }, [id]);
+  }, [idProduct]);
 
-  const [similarProduct, setSimilarProduct] = useState([]);
   useEffect(() => {
-    const urlSimilarProduct = `https://fakestoreapi.com/products/category/${productDetail.category}?limit=4`;
+    setLoading(true);
+    const urlSimilarProduct = `${process.env.REACT_APP_API_KEY}/products/category/${productDetail.category}?limit=4`;
     axios.get(urlSimilarProduct).then((response) => {
       setSimilarProduct(response.data);
+      setLoading(false);
     });
   }, [productDetail.category]);
 
@@ -35,24 +39,29 @@ const SimilarProduct = () => {
         <div className="row">
           {similarProduct.map((product, index) => (
             <div className="col-sm-3" key={index}>
-              <figure className="figure">
-                <img
-                  src={product.image}
-                  className={`figure-img img-fluid ${style.imgSimilarProduct}`}
-                  alt="..."
-                />
-                <figcaption className="figure-caption">
-                  <div className="row">
-                    <div className="col">
-                      <h6>Hatty Bomb</h6>
-                      <p>{product.category}</p>
+              {loading && <ProductSkeleton />}
+              {!loading && (
+                <figure className="figure">
+                  <img
+                    src={product.image}
+                    className={`figure-img img-fluid ${style.imgSimilarProduct}`}
+                    alt={product.title}
+                  />
+                  <figcaption className="figure-caption">
+                    <div className="row">
+                      <div className={`col-8 ${style.titleSimilar}`}>
+                        <h6>
+                          <strong>{product.title.slice(0, 15)}</strong>
+                        </h6>
+                        <p>{product.category}</p>
+                      </div>
+                      <div className="col d-flex align-items-center justify-content-end">
+                        <p style={{ fontSize: "18px" }}>$ {product.price}</p>
+                      </div>
                     </div>
-                    <div className="col d-flex align-items-center justify-content-end">
-                      <p style={{ fontSize: "18px" }}>$ {product.price}</p>
-                    </div>
-                  </div>
-                </figcaption>
-              </figure>
+                  </figcaption>
+                </figure>
+              )}
             </div>
           ))}
         </div>

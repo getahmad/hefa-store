@@ -3,10 +3,13 @@ import { useEffect, useState } from "react";
 import carousel from "../../assets/img/slideshow/1.png";
 import style from "./carousel.module.scss";
 
+// import {connect} from "react-redux"
+// import types from "../../redux/actions/types"
+
 const Carousel = () => {
   const [product, setProduct] = useState([]);
   useEffect(() => {
-    const urlProduct = `https://fakestoreapi.com/products?limit=3`;
+    const urlProduct = `${process.env.REACT_APP_API_KEY}/products?limit=3`;
     axios.get(urlProduct).then((res) => {
       setProduct(res.data);
     });

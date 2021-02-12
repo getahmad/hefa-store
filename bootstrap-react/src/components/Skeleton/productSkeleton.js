@@ -1,12 +1,10 @@
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import Skeleton from "react-loading-skeleton";
 
 const ProductSkeleton = () => {
   return (
     <>
-      <SkeletonTheme color="#fffff" highlightColor="#444">
-        <Skeleton height={200} />
-        <Skeleton count={2} />
-      </SkeletonTheme>
+      <Skeleton height={200} />
+      <Skeleton count={2} />
     </>
   );
 };
