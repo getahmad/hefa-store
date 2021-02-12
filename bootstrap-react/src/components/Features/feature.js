@@ -1,45 +1,16 @@
 import plus from "../../assets/img/detail.png";
 import style from "./feature.module.scss";
-import { useEffect } from "react";
 import ProductSkeleton from "../Skeleton/productSkeleton";
 import { connect } from "react-redux";
-import types from "../../redux/actions/types";
-// import axios from "axios";
-// import { useParams } from "react-router-dom";
 
-const Feature = ({ getProduct, isLoading, product }) => {
-  // const [product, setProduct] = useState([]);
-  // const [loading, setLoading] = useState(false);
-  // let { category } = useParams();
-
-  // useEffect(() => {
-  //   setLoading(true);
-  //   const urlProduct = `${process.env.REACT_APP_API_KEY}/products?limit=12`;
-  //   axios.get(urlProduct).then((res) => {
-  //     setProduct(res.data);
-  //     setLoading(false);
-  //   });
-  // }, []);
-
-  // useEffect(() => {
-  //   const urlCategoryProduct = `${process.env.REACT_APP_API_KEY}/products/category/${category}`;
-  //   axios.get(urlCategoryProduct).then((res) => {
-  //     setProduct(res.data);
-  //     setLoading(false);
-  //   });
-  // }, [category]);
-
-  useEffect(() => {
-    getProduct();
-  }, [getProduct]);
-
+const Feature = ({ isLoading, product, title, subTitle }) => {
   return (
     <section className={`bg-light p-5 ${style.features}`}>
       <div className="container">
         <div className="row">
           <div className="col mb-3">
-            <h3>Special Eid</h3>
-            <p>Promo!! grab it fast</p>
+            <h3>{title}</h3>
+            <p>{subTitle}</p>
           </div>
         </div>
         <div className="row">
@@ -88,11 +59,4 @@ const reduxState = (globalState) => {
   };
 };
 
-const reduxDispatch = (dispatch) => {
-  return {
-    // setIdProduct:(idProduct)=> dispatch({type: types.SET_ID_PRODUCT, payload: idProduct}),
-    getProduct: () => dispatch({ type: types.GET_PRODUCT_REQUEST }),
-  };
-};
-
-export default connect(reduxState, reduxDispatch)(Feature);
+export default connect(reduxState)(Feature);

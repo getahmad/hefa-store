@@ -3,9 +3,6 @@ import { useEffect, useState } from "react";
 import carousel from "../../assets/img/slideshow/1.png";
 import style from "./carousel.module.scss";
 
-// import {connect} from "react-redux"
-// import types from "../../redux/actions/types"
-
 const Carousel = () => {
   const [product, setProduct] = useState([]);
   useEffect(() => {

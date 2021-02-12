@@ -1,4 +1,4 @@
-const Breadcrumb = (props) => {
+const Breadcrumb = ({ breadcrumbCurrent }) => {
   return (
     <nav aria-label="breadcrumb ">
       <ol className="breadcrumb bg-transparent pl-0 mt-5 ">
@@ -6,7 +6,7 @@ const Breadcrumb = (props) => {
           <a href="/">Home</a>
         </li>
         <li className="breadcrumb-item active" aria-current="page">
-          {props.breadcrumbCurrent}
+          {breadcrumbCurrent}
         </li>
       </ol>
     </nav>

@@ -3,6 +3,7 @@ import LandingPage from "./pages/LandingPage";
 import DetailProduct from "./pages/DetailProduct";
 import CartCheckout from "./pages/CartCheckout";
 import CategoryProduct from "./pages/CategoryProduct";
+import Admin from "./pages/Admin";
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
           </Route>
           <Route path="/category/:category">
             <CategoryProduct />
+          </Route>
+          <Route path="/admin">
+            <Admin />
           </Route>
           <Route path="/">
             <LandingPage />

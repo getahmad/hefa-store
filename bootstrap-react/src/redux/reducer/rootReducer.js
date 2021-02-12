@@ -1,8 +1,8 @@
 import types from "../actions/types";
 
 const globalState = {
-  //   idProduct: null,
   product: null,
+  category: null,
   isLoading: false,
   isError: false,
 };
@@ -45,6 +45,42 @@ const rootReducer = (state = globalState, action) => {
   }
 
   if (action.type === types.GET_DETAIL_PRODUCT_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      isError: false,
+      product: action.product,
+    };
+  }
+
+  //ALL CATEGORY
+  if (action.type === types.GET_ALL_CATEGORY_REQUEST) {
+    return {
+      ...state,
+      isLoading: true,
+      isError: false,
+    };
+  }
+
+  if (action.type === types.GET_ALL_CATEGORY_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      isError: false,
+      category: action.category,
+    };
+  }
+
+  //PRODUCT PER CATEGORY
+  if (action.type === types.GET_PRODUCT_CATEGORY_REQUEST) {
+    return {
+      ...state,
+      isLoading: true,
+      isError: false,
+    };
+  }
+
+  if (action.type === types.GET_PRODUCT_CATEGORY_SUCCESS) {
     return {
       ...state,
       isLoading: false,
