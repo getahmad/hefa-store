@@ -8,26 +8,26 @@ import imgReview2 from "../../assets/img/single/review/2.png";
 import style from "./infoProduct.module.scss";
 import "font-awesome/css/font-awesome.min.css";
 import { useEffect, useState } from "react";
-// import { connect } from "react-redux";
-// import types from "../../redux/actions/types";
+import { connect } from "react-redux";
+import types from "../../redux/actions/types";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-// const InfoProduct = ({ getProduct, isLoading, product }) => {
-const InfoProduct = () => {
-  const [product, setProduct] = useState({});
+const InfoProduct = ({ getProduct, isLoading, product }) => {
+  // const InfoProduct = () => {
+  // const [product, setProduct] = useState({});
 
   let { idProduct } = useParams();
-  useEffect(() => {
-    const urlProductDetail = `${process.env.REACT_APP_API_KEY}/products/${idProduct}`;
-    axios.get(urlProductDetail).then((response) => {
-      setProduct(response.data);
-    });
-  }, [idProduct]);
-
   // useEffect(() => {
-  //   getProduct();
-  // }, [getProduct]);
+  //   const urlProductDetail = `${process.env.REACT_APP_API_KEY}/products/${idProduct}`;
+  //   axios.get(urlProductDetail).then((response) => {
+  //     setProduct(response.data);
+  //   });
+  // }, [idProduct]);
+
+  useEffect(() => {
+    getProduct(idProduct);
+  }, [getProduct, idProduct]);
 
   return (
     <>
@@ -231,19 +231,19 @@ const InfoProduct = () => {
   );
 };
 
-// const reduxState = (globalState) => {
-//   return {
-//     product: globalState.product,
-//     isLoading: globalState.isLoading,
-//   };
-// };
+const reduxState = (globalState) => {
+  return {
+    product: globalState.product,
+    isLoading: globalState.isLoading,
+  };
+};
 
-// const reduxDispatch = (dispatch) => {
-//   return {
-//     getProduct: (idProduct) =>
-//       dispatch({ type: types.GET_DETAIL_PRODUCT_REQUEST }),
-//   };
-// };
+const reduxDispatch = (dispatch) => {
+  return {
+    getProduct: (idProduct) =>
+      dispatch({ type: types.GET_DETAIL_PRODUCT_REQUEST }),
+  };
+};
 
-// export default connect(reduxState, reduxDispatch)(InfoProduct);
-export default InfoProduct;
+export default connect(reduxState, reduxDispatch)(InfoProduct);
+// export default InfoProduct;

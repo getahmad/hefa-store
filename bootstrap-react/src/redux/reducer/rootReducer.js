@@ -93,3 +93,10 @@ const rootReducer = (state = globalState, action) => {
 };
 
 export default rootReducer;
+
+// import { combineReducers } from "redux";
+
+// import product from "./product";
+// export default combineReducers({
+//   product: product,
+// });
