@@ -1,9 +1,9 @@
 import plus from "../../assets/img/detail.png";
-import style from "./feature.module.scss";
+import style from "./cardProduct.module.scss";
 import ProductSkeleton from "../Skeleton/productSkeleton";
 import { connect } from "react-redux";
 
-const Feature = ({ isLoading, product, title, subTitle }) => {
+const CardProduct = ({ isLoading, product, title, subTitle }) => {
   return (
     <section className={`bg-light p-5 ${style.features}`}>
       <div className="container">
@@ -59,4 +59,4 @@ const reduxState = (globalState) => {
   };
 };
 
-export default connect(reduxState)(Feature);
+export default connect(reduxState, null)(CardProduct);

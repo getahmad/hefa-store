@@ -21,7 +21,7 @@ const rootReducer = (state = globalState, action) => {
       ...state,
       isLoading: false,
       isError: false,
-      product: action.product,
+      product: action.payload,
     };
   }
 
@@ -49,7 +49,7 @@ const rootReducer = (state = globalState, action) => {
       ...state,
       isLoading: false,
       isError: false,
-      product: action.product,
+      product: action.payload,
     };
   }
 
@@ -67,7 +67,7 @@ const rootReducer = (state = globalState, action) => {
       ...state,
       isLoading: false,
       isError: false,
-      category: action.category,
+      category: action.payload,
     };
   }
 
@@ -85,7 +85,7 @@ const rootReducer = (state = globalState, action) => {
       ...state,
       isLoading: false,
       isError: false,
-      product: action.product,
+      product: action.payload,
     };
   }
 

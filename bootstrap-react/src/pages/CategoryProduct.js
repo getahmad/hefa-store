@@ -1,19 +1,20 @@
 import Breadcrumb from "../components/Breadcrumb/breadcrumb";
-import Feature from "../components/Features/feature";
 import Footer from "../components/Footer/footer";
+
 import Header from "../components/Header/header";
-import types from "../redux/actions/types";
+import { getProductCategory } from "../redux/actions/productAction";
 import { connect } from "react-redux";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import UpperCaseFirstLetter from "../utils/UpperCaseFirstLetter";
+import CardProduct from "../components/CardProduct/CardProduct";
 
 const CategoryProduct = ({ getProductCategory }) => {
-  useEffect(() => {
-    getProductCategory();
-  }, [getProductCategory]);
-
   let { category } = useParams();
+
+  useEffect(() => {
+    getProductCategory(category);
+  }, [getProductCategory, category]);
 
   return (
     <>
@@ -21,7 +22,7 @@ const CategoryProduct = ({ getProductCategory }) => {
       <div className="container pt-5">
         <Breadcrumb breadcrumbCurrent="Category" />
       </div>
-      <Feature title={UpperCaseFirstLetter(category)} subTitle="" />
+      <CardProduct title={UpperCaseFirstLetter(category)} subTitle="" />
       <Footer />
     </>
   );
@@ -29,8 +30,7 @@ const CategoryProduct = ({ getProductCategory }) => {
 
 const reduxDispatch = (dispatch) => {
   return {
-    getProductCategory: () =>
-      dispatch({ type: types.GET_PRODUCT_CATEGORY_REQUEST }),
+    getProductCategory: (category) => dispatch(getProductCategory(category)),
   };
 };
 

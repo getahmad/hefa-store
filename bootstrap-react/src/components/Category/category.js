@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 import style from "./category.module.scss";
 import icCategory from "../../assets/icon/category.svg";
-import types from "../../redux/actions/types";
+import { getAllCategory } from "../../redux/actions/productAction";
 import { connect } from "react-redux";
 import Skeleton from "react-loading-skeleton";
 import UpperCaseFirstLetter from "../../utils/UpperCaseFirstLetter";
 
-const Category = ({ category, isLoading, getCategory }) => {
+const Category = ({ category, isLoading, getAllCategory }) => {
   useEffect(() => {
-    getCategory();
-  }, [getCategory]);
+    getAllCategory();
+  }, [getAllCategory]);
 
   return (
     <>
@@ -50,7 +50,7 @@ const reduxState = (globalState) => {
 
 const reduxDispatch = (dispatch) => {
   return {
-    getCategory: () => dispatch({ type: types.GET_ALL_CATEGORY_REQUEST }),
+    getAllCategory: () => dispatch(getAllCategory()),
   };
 };
 

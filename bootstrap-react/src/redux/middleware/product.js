@@ -7,18 +7,18 @@ function* getProductWorker() {
     const urlGetProduct = `${process.env.REACT_APP_API_KEY}/products?limit=12`;
     const response = yield axios.get(urlGetProduct);
     const product = response.data;
-    yield put({ type: types.GET_PRODUCT_SUCCESS, product: product });
+    yield put({ type: types.GET_PRODUCT_SUCCESS, payload: product });
   } catch (error) {
     yield put({ type: types.GET_PRODUCT_FAILURE });
   }
 }
 
-function* getDetailProductWorker() {
+function* getDetailProductWorker({ idProduct }) {
   try {
-    const urlGetDetailProduct = `${process.env.REACT_APP_API_KEY}/products/1`;
+    const urlGetDetailProduct = `${process.env.REACT_APP_API_KEY}/products/${idProduct}`;
     const response = yield axios.get(urlGetDetailProduct);
     const product = response.data;
-    yield put({ type: types.GET_DETAIL_PRODUCT_SUCCESS, product: product });
+    yield put({ type: types.GET_DETAIL_PRODUCT_SUCCESS, payload: product });
   } catch (error) {
     yield put({ type: types.GET_PRODUCT_FAILURE });
   }
@@ -29,18 +29,18 @@ function* getCategoryWorker() {
     const urlGetCategory = `${process.env.REACT_APP_API_KEY}/products/categories`;
     const response = yield axios.get(urlGetCategory);
     const category = response.data;
-    yield put({ type: types.GET_ALL_CATEGORY_SUCCESS, category: category });
+    yield put({ type: types.GET_ALL_CATEGORY_SUCCESS, payload: category });
   } catch (error) {
     yield put({ type: types.GET_PRODUCT_FAILURE });
   }
 }
 
-function* getProductCategoryWorker() {
+function* getProductCategoryWorker({ category }) {
   try {
-    const urlGetProduct = `${process.env.REACT_APP_API_KEY}/products/category/electronics`;
+    const urlGetProduct = `${process.env.REACT_APP_API_KEY}/products/category/${category}`;
     const response = yield axios.get(urlGetProduct);
     const product = response.data;
-    yield put({ type: types.GET_PRODUCT_CATEGORY_SUCCESS, product: product });
+    yield put({ type: types.GET_PRODUCT_CATEGORY_SUCCESS, payload: product });
   } catch (error) {
     yield put({ type: types.GET_PRODUCT_FAILURE });
   }
