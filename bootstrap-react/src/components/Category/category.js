@@ -12,7 +12,7 @@ const Category = ({ category, isLoading, getAllCategory }) => {
   }, [getAllCategory]);
 
   const skeletonsCategory = [1, 2, 3, 4, 5, 6].map((n) => (
-    <Skeleton height={60} width={110} className="ml-4" key={n} />
+    <Skeleton height={60} width={110} className="mx-2 mb-5" key={n} />
   ));
 
   return (
