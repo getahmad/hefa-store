@@ -12,7 +12,7 @@ import { connect } from "react-redux";
 import { getDetailProduct } from "../../redux/actions/productAction";
 import { useParams } from "react-router-dom";
 
-const InfoProduct = ({ getProduct, isLoading, product, getDetailProduct }) => {
+const InfoProduct = ({ isLoading, product, getDetailProduct }) => {
   let { idProduct } = useParams();
 
   useEffect(() => {

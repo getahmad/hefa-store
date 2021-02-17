@@ -11,19 +11,21 @@ const Category = ({ category, isLoading, getAllCategory }) => {
     getAllCategory();
   }, [getAllCategory]);
 
+  const skeletonsCategory = [1, 2, 3, 4, 5, 6].map((n) => (
+    <Skeleton height={60} width={110} className="ml-4" key={n} />
+  ));
+
   return (
     <>
       <div className={`container ${style.category} `}>
         <h3>Categories</h3>
         <p>sok dipilih</p>
         <div className="row justify-content-center">
-          {category &&
-            category.map((category, index) => (
-              <div key={index}>
-                {isLoading && (
-                  <Skeleton height={50} width={100} className="ml-5" />
-                )}
-                {!isLoading && (
+          {isLoading
+            ? skeletonsCategory
+            : category &&
+              category.map((category, index) => (
+                <div key={index}>
                   <a
                     href={`/category/${category}`}
                     className={` btn ml-3 mt-3 mb-5 ${style.btnCategory}`}
@@ -32,9 +34,8 @@ const Category = ({ category, isLoading, getAllCategory }) => {
                     <br />
                     {UpperCaseFirstLetter(category)}
                   </a>
-                )}
-              </div>
-            ))}
+                </div>
+              ))}
         </div>
       </div>
     </>

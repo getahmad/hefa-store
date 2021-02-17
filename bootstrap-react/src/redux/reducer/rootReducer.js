@@ -12,6 +12,7 @@ const rootReducer = (state = globalState, action) => {
     return {
       ...state,
       isLoading: true,
+      product: action.payload,
       isError: false,
     };
   }
@@ -19,9 +20,9 @@ const rootReducer = (state = globalState, action) => {
   if (action.type === types.GET_PRODUCT_SUCCESS) {
     return {
       ...state,
-      isLoading: false,
       isError: false,
       product: action.payload,
+      isLoading: false,
     };
   }
 
@@ -47,9 +48,10 @@ const rootReducer = (state = globalState, action) => {
   if (action.type === types.GET_DETAIL_PRODUCT_SUCCESS) {
     return {
       ...state,
-      isLoading: false,
+
       isError: false,
       product: action.payload,
+      isLoading: false,
     };
   }
 
@@ -65,9 +67,10 @@ const rootReducer = (state = globalState, action) => {
   if (action.type === types.GET_ALL_CATEGORY_SUCCESS) {
     return {
       ...state,
-      isLoading: false,
+
       isError: false,
       category: action.payload,
+      isLoading: false,
     };
   }
 
@@ -83,9 +86,10 @@ const rootReducer = (state = globalState, action) => {
   if (action.type === types.GET_PRODUCT_CATEGORY_SUCCESS) {
     return {
       ...state,
-      isLoading: false,
+
       isError: false,
       product: action.payload,
+      isLoading: false,
     };
   }
 

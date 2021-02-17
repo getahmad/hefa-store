@@ -4,6 +4,10 @@ import ProductSkeleton from "../Skeleton/productSkeleton";
 import { connect } from "react-redux";
 
 const CardProduct = ({ isLoading, product, title, subTitle }) => {
+  const skeletonsCard = [1, 2, 3, 4, 5, 6].map((n) => (
+    <ProductSkeleton key={n} />
+  ));
+
   return (
     <section className={`bg-light p-5 ${style.features}`}>
       <div className="container">
@@ -14,11 +18,11 @@ const CardProduct = ({ isLoading, product, title, subTitle }) => {
           </div>
         </div>
         <div className="row">
-          {product &&
-            product.map((product, index) => (
-              <div className="col-6 col-sm-4 col-md-3 col-lg-2" key={index}>
-                {isLoading && <ProductSkeleton />}
-                {!isLoading && (
+          {isLoading
+            ? skeletonsCard
+            : product &&
+              product.map((product, index) => (
+                <div className="col-6 col-sm-4 col-md-3 col-lg-2" key={index}>
                   <figure className={style.figure}>
                     <div className={style.figureImg}>
                       <img
@@ -43,9 +47,8 @@ const CardProduct = ({ isLoading, product, title, subTitle }) => {
                       <p>$ {product.price}</p>
                     </figcaption>
                   </figure>
-                )}
-              </div>
-            ))}
+                </div>
+              ))}
         </div>
       </div>
     </section>
@@ -54,8 +57,8 @@ const CardProduct = ({ isLoading, product, title, subTitle }) => {
 
 const reduxState = (globalState) => {
   return {
-    product: globalState.product,
     isLoading: globalState.isLoading,
+    product: globalState.product,
   };
 };
 
