@@ -13,7 +13,7 @@ const AddProduct = ({ category, getAllCategory }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const urlAddProduct = `https://fakestoreapi.com/products`;
+    const urlAddProduct = `${process.env.REACT_APP_API_KEY}/products`;
     const bodyData = {
       title: title,
       price: price,
@@ -75,6 +75,7 @@ const AddProduct = ({ category, getAllCategory }) => {
             className="form-control rounded-pill mb-4"
             id="inputCategory "
             onChange={(e) => setCategory(e.target.value)}
+            required
           >
             {category &&
               category.map((category, index) => (

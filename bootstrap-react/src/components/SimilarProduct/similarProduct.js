@@ -26,6 +26,10 @@ const SimilarProduct = () => {
     });
   }, [productDetail.category]);
 
+  const productSkeleton = [1, 2, 3, 4, 5, 6].map((n) => (
+    <ProductSkeleton key={n} />
+  ));
+
   return (
     <section className={style.similarProduct}>
       <div className="container">
@@ -37,33 +41,32 @@ const SimilarProduct = () => {
         </div>
 
         <div className="row">
-          {similarProduct.map((product, index) => (
-            <div className="col-sm-3" key={index}>
-              {loading && <ProductSkeleton />}
-              {!loading && (
-                <figure className="figure">
-                  <img
-                    src={product.image}
-                    className={`figure-img img-fluid ${style.imgSimilarProduct}`}
-                    alt={product.title}
-                  />
-                  <figcaption className="figure-caption">
-                    <div className="row">
-                      <div className={`col-8 ${style.titleSimilar}`}>
-                        <h6>
-                          <strong>{product.title.slice(0, 15)}</strong>
-                        </h6>
-                        <p>{product.category}</p>
+          {loading
+            ? productSkeleton
+            : similarProduct.map((product, index) => (
+                <div className="col-sm-3" key={index}>
+                  <figure className="figure">
+                    <img
+                      src={product.image}
+                      className={`figure-img img-fluid ${style.imgSimilarProduct}`}
+                      alt={product.title}
+                    />
+                    <figcaption className="figure-caption">
+                      <div className="row">
+                        <div className={`col-7 ${style.titleSimilar}`}>
+                          <h6>
+                            <strong>{product.title.slice(0, 15)}</strong>
+                          </h6>
+                          <p>{product.category}</p>
+                        </div>
+                        <div className="col d-flex align-items-center justify-content-end">
+                          <p style={{ fontSize: "18px" }}>$ {product.price}</p>
+                        </div>
                       </div>
-                      <div className="col d-flex align-items-center justify-content-end">
-                        <p style={{ fontSize: "18px" }}>$ {product.price}</p>
-                      </div>
-                    </div>
-                  </figcaption>
-                </figure>
-              )}
-            </div>
-          ))}
+                    </figcaption>
+                  </figure>
+                </div>
+              ))}
         </div>
       </div>
     </section>

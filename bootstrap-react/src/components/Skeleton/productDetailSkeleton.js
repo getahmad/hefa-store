@@ -5,9 +5,10 @@ const ProductDetailSkeleton = () => {
     <div className="container">
       <div className="row">
         <div className="col-lg-5">
-          <Skeleton height={456} width={400} />
+          <Skeleton height={456} />
         </div>
         <div className="col-lg-6">
+          <br />
           <Skeleton height={30} />
           <Skeleton height={30} />
           <Skeleton width={80} className="mt-5" /> <br />

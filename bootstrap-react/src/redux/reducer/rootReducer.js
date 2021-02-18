@@ -93,6 +93,29 @@ const rootReducer = (state = globalState, action) => {
     };
   }
 
+  //post product
+  // if (action.type === types.POST_PRODUCT_REQUEST) {
+  //   return {
+  //     ...state,
+  //     isLoading: true,
+  //     isError: false,
+  //   };
+  // }
+  // if (action.type === types.POST_PRODUCT_SUCCESS) {
+  //   return {
+  //     ...state,
+  //     isLoading: false,
+  //     isError: false,
+  //   };
+  // }
+  // if (action.type === types.POST_PRODUCT_FAILURE) {
+  //   return {
+  //     ...state,
+  //     isError: true,
+  //     ifLoading: false,
+  //   };
+  // }
+
   return state;
 };
 
