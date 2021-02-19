@@ -57,8 +57,8 @@ const CardProduct = ({ isLoading, product, title, subTitle }) => {
 
 const reduxState = (globalState) => {
   return {
-    isLoading: globalState.isLoading,
-    product: globalState.product,
+    isLoading: globalState.productReducer.isLoading,
+    product: globalState.productReducer.product,
   };
 };
 

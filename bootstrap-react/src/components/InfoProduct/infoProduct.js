@@ -231,8 +231,8 @@ const InfoProduct = ({ isLoading, product, getDetailProduct }) => {
 
 const reduxState = (globalState) => {
   return {
-    product: globalState.product,
-    isLoading: globalState.isLoading,
+    product: globalState.productReducer.product,
+    isLoading: globalState.productReducer.isLoading,
   };
 };
 

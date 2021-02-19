@@ -44,8 +44,8 @@ const Category = ({ category, isLoading, getAllCategory }) => {
 
 const reduxState = (globalState) => {
   return {
-    category: globalState.category,
-    isLoading: globalState.isLoading,
+    category: globalState.productReducer.category,
+    isLoading: globalState.productReducer.isLoading,
   };
 };
 
