@@ -46,26 +46,23 @@ function* getProductCategoryWorker({ category }) {
   }
 }
 
-// function* postProductWorker({ product }) {
-//   try {
-//     const urlPostProduct = `${process.env.REACT_APP_API_KEY}/products`;
-//     const bodyData = {
-//       title: product.title,
-//       price: product.price,
-//       description: product.description,
-//       image: product.image,
-//       category: product.category,
-//     };
-//     // const response = yield axios.post(urlPostProduct, bodyData);
-//     // const product = response.data;
-//     // yield put({ type: types.POST_PRODUCT_SUCCESS, payload: product });
-//     yield axios.post(urlPostProduct, bodyData);
-//     yield put({ type: types.POST_PRODUCT_SUCCESS });
-//     console.log("successs ");
-//   } catch (error) {
-//     yield put({ type: types.POST_PRODUCT_FAILURE });
-//   }
-// }
+function* postProductWorker({ product }) {
+  try {
+    const urlPostProduct = `${process.env.REACT_APP_API_KEY}/products`;
+    const bodyData = {
+      title: product.title,
+      price: product.price,
+      description: product.description,
+      image: product.image,
+      category: product.category,
+    };
+    yield axios.post(urlPostProduct, bodyData);
+    yield put({ type: types.POST_PRODUCT_SUCCESS });
+    console.log("successs ");
+  } catch (error) {
+    yield put({ type: types.POST_PRODUCT_FAILURE });
+  }
+}
 
 function* productSaga() {
   yield takeLatest(types.GET_PRODUCT_REQUEST, getProductWorker);
@@ -75,7 +72,7 @@ function* productSaga() {
     types.GET_PRODUCT_CATEGORY_REQUEST,
     getProductCategoryWorker
   );
-  // yield takeLatest(types.POST_PRODUCT_REQUEST, postProductWorker);
+  yield takeLatest(types.POST_PRODUCT_REQUEST, postProductWorker);
 }
 
 export default productSaga;

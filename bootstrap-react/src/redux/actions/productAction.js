@@ -18,6 +18,6 @@ export const getProductCategory = (category) => {
 };
 
 //add Product
-// export const postAddProduct = (product) => {
-//   return { type: types.POST_PRODUCT_REQUEST, product };
-// };
+export const postAddProduct = (product) => {
+  return { type: types.POST_PRODUCT_REQUEST, product };
+};
